@@ -1,0 +1,33 @@
+<app-userheader></app-userheader>
+<div class="container">
+    <div class="row">
+            <!-- <h1 class="mx-auto">Restaurant</h1> -->
+            <br>
+    </div>
+    <div class="row">
+       
+        <div class="col col-3 col-sm-3 " *ngFor="let i of result| paginate:{itemsPerPage: 4, currentPage:p}">
+            <div class="card text-center" style="background-color: lightgreen;">
+                <div class="card-header">
+                    <p class="mx-auto">{{i.star}} Star Restaurant</p>                  
+                </div>
+                <div class="card-body">
+                  <h3 class="card-title">{{i.name}}</h3>
+                  <img class ="card-img-top rounded-circle " src="http://localhost:8080/rest/view/{{i.image}}" width="150" height="200" alt="{{i.image}} Not Found">
+                  <p class="card-text">{{i.city}}</p>
+                  <p class="card-text">PhNo   : {{i.phno}}</p>
+                  <p  class="card-text">{{i.opentime}} Am TO {{i.closetime}} Pm</p>
+                  <!-- <a href="#"   ></a> -->
+                  <button class="btn btn-link" value="View Dishes" id="viewdishes" (click)="userviewrestitem(i._id)">View Dishes</button>
+                </div>
+                <div class="card-footer text-muted">
+                  <button class="btn btn-link" value="Reserve Table" id="reservetable" (click)="userreservation(i._id)">Reserve Table</button>
+                  <!-- <a href="userreservation">Reserve Table</a> -->
+                </div>
+              </div>
+              <br>
+        </div>
+        
+    </div>
+    <pagination-controls (pageChange)="p=$event"></pagination-controls>
+</div>

@@ -1,0 +1,18 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.min.css";
+
+body{
+  background: url('./assets/img/hero-bg.jpg');
+  background-size: cover;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-blend-mode: overlay;
+  color: white;
+}
+.custom_body{
+  background-color: rgb(50, 50, 50);
+}
+.custom_table {
+  color: #eaedf1;
+}

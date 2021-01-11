@@ -1,0 +1,36 @@
+<app-adminheader></app-adminheader>
+<div class="container">
+    <div class="row">
+        <!-- <div class="col col-2 col-sm-2 col-md-2"></div> -->
+        <div class="col col-12 col-sm-12 col-md-12">
+            <h3 style="text-align: center;">Restaurant Details</h3>
+            <table class="table custom_table">
+                <thead>
+                    <!-- <th>Sl.No</th> -->
+                    <th>Name</th>
+                    <th>PhNo</th>
+                    <th>Email</th>
+                    <th>city</th>
+                    <th>star</th>
+                    <th>Status</th>
+                    <th >Action</th>
+                    
+                </thead>
+                <tr *ngFor="let i of result | paginate:{itemsPerPage: 7, currentPage:p}">
+                    <!-- <td>{{ j+1 }}</td> -->
+                    <td>{{i.name}}</td>  
+                    <td>{{i.phno}}</td>
+                    <td>{{i.email}}</td>
+                    <td>{{i.city}}</td>
+                    <td>{{i.star}}</td>
+                    <td>{{i.status}}</td>
+                    <td><input type="button" class="text-primary "value={{i.caption}} id="approve" (click)= changestatus(i._id,i.caption)></td>   
+                </tr>
+                <br>
+            </table>
+            <pagination-controls (pageChange)="p=$event"></pagination-controls>   
+        </div>
+        
+        <div class="col col-2 col-sm-2 col-md-2"></div>
+    </div>
+</div>

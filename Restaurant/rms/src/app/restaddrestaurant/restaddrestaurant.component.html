@@ -1,0 +1,118 @@
+<app-restheader></app-restheader>
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col col-5 col-sm-5">
+            <img src="../../assets/img/img1.jpeg" class="img" alt="Img Not Found">
+        </div>
+        <div class="col col-7 col-sm-7">
+            <form class="form-group" (ngSubmit)="addrest()" method="POST" enctype="multipart/form-data">
+                <div class="table-responsive-sm">
+                <table class="table table-sm">
+                    <th class="thead-light" colspan="3">Register your Restaurant...</th>
+                    <tr>
+                        <td colspan="3">
+                            <input type="text" class="form-control" name="name" id="" [(ngModel)]='restaurant.name'
+                                placeholder="Restaurant Name">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" class="form-control" name="phno" id="" [(ngModel)]='restaurant.phno'
+                                placeholder="Ph No"></td>
+                        <td colspan="2"><input type="text" class="form-control" name="opentime" id="" [(ngModel)]=restaurant.opentime placeholder="opening time"></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" class="form-control" name="email" id="" [(ngModel)]=restaurant.email
+                                placeholder="email"></td>
+                        <td colspan="2"><input type="text" class="form-control" name="closetime" id=""  [(ngModel)]=restaurant.closetime placeholder="closing time"></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" class="form-control" name="city" id="" [(ngModel)]=restaurant.city
+                                placeholder="city"></td>
+                        <td colspan="2">
+                            <!-- <select name="star" id="star"  [ngModel]="star" class="form-control">  -->
+                            <select class="form-control" required name="star" [(ngModel)]=restaurant.star>
+                                <option value="" disabled selected hidden>Select Star</option>
+                                <!-- <option value=" disabled selected hidden">select</option> -->
+                                <option *ngFor="let i of [1,2,3,4,5] " value={{i}}>{{i}} Star</option>
+                            </select>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="3">
+                            <div class="table-responsive-sm">
+                            <table class="table table-dark table-sm">
+
+                                <tr>
+                                    <th>Seat</th>
+                                    <th>count</th>
+                                    <th>Seat</th>
+                                    <th>count</th>
+                                    <th>Seat</th>
+                                    <th>count</th>
+                                </tr>
+                                <tr>
+                                    <!-- <td>
+                                        <select  class="form-control" required>
+                                            <option value="" disabled selected hidden>Select seat</option>
+                                        
+                                            <option *ngFor="let i of [1,2,4,6,8,10] " value={{i}}>{{i}} seat</option>
+                                        </select>
+                                    </td> -->
+                                    <td><label for="1 Seater">1 Seat</label></td>
+                                    <td><input type="text" class="form-control"
+                                            [(ngModel)]="restaurant.tablelist.seat_1" placeholder="0" name="seat_1">
+                                    </td>
+                                    <td><label for="2 Seater">2 Seat</label></td>
+                                    <td><input type="text" class="form-control"
+                                            [(ngModel)]="restaurant.tablelist.seat_2" placeholder="0" name="seat_2">
+                                    </td>
+                                    <td><label for="4 Seater">4 Seat</label></td>
+                                    <td><input type="text" class="form-control"
+                                            [(ngModel)]="restaurant.tablelist.seat_4" placeholder="0" name="seat_4">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><label for="1 Seater">6 Seat</label></td>
+                                    <td><input type="text" class="form-control"
+                                            [(ngModel)]="restaurant.tablelist.seat_6" placeholder="0" name="seat_6">
+                                    </td>
+                                    <td><label for="2 Seater">8 Seat</label></td>
+                                    <td><input type="text" class="form-control"
+                                            [(ngModel)]="restaurant.tablelist.seat_8" placeholder="0" name="seat_8">
+                                    </td>
+                                    <td><label for="4 Seater">10 Seat</label></td>
+                                    <td><input type="text" class="form-control"
+                                            [(ngModel)]="restaurant.tablelist.seat_10" placeholder="0" name="seat_10">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                </tr>
+                            </table>
+                        </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+
+                            <input type="file" name="photo" ng2FileSelect [uploader]="uploader"
+                                ([ngModel])='restaurant.image' />
+                            <!-- <button type="button" class="btn btn-success btn-s" 
+                        (click)="uploader.uploadAll()" 
+                        [disabled]="!uploader.getNotUploadedItems().length" >
+                            Upload an Image
+                        </button> -->
+                        </td>
+                        <td><input class="btn btn-primary" type="submit" value="Submit"></td>
+                        <td><input class="btn btn-primary" type="reset" value="Reset"></td>
+                    </tr>
+                </table>
+            </div>
+            </form>
+        </div>
+      
+    </div>
+</div>

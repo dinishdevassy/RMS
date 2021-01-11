@@ -1,0 +1,11 @@
+.custom_navbar{
+    /* background-blend-mode: overlay; */
+    background-color: rgba(50,50,50,0.5);
+    /* opacity: 0.4; */
+    color: white;
+    font-weight: 500;
+}
+
+.custom_ul{
+    color: white;
+}

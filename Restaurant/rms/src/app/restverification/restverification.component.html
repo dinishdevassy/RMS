@@ -1,0 +1,53 @@
+<!-- <p>restverification works!</p> -->
+<app-restheader></app-restheader>
+<div class="container">
+  <div class="row">
+    <div class="col col-12 col-sm-12">
+      <h1 style="text-align: center;">{{details[0].name}}</h1>
+      <h5 style="text-align: center;">{{details[0].city}}</h5>
+    </div>
+  </div>
+    <div class="row">
+        <div class="col col-12 col-sm-12">
+            <table class="table table-hover ">
+                <thead>
+                  <tr>
+                    <!-- <th scope="col">#</th> -->
+                    <th scope="col">Date</th>
+                    <th scope="col">Time Slot</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">PhNo</th>
+                    
+                    <!-- <th scope="col">Table Type</th> -->
+
+                    <th scope="col">OTP</th>
+                    <th scope="col">Verify</th>
+                    <!-- <th scope="col">Cancel</th> -->
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let i of newresult | paginate:{itemsPerPage: 7, currentPage:p}">
+                    <!-- <th scope="row">1</th> -->
+                    <td>{{i.date}}</td>
+                    <td>{{i.time}}</td>
+                    <td>{{i.usrname}}</td>
+                    <td>{{i.usrphno}}</td>
+
+                    <!-- <td>{{i.seattype}}</td> -->
+                    <!-- <td>{{i.status}}</td> -->
+                    <!-- <td>{{i.otp}}</td> -->
+                    <td><input type="text" name="" id="" placeholder="OTP" class="form-control-sm" [(ngModel)]="i.enteredOTP"></td>
+                    <td><input type="button" class="text-primary "value="Verify" id="approve" (click)= verify(i)></td>   
+                    <!-- <td><input type="button" class="text-primary "value="" id="approve" (click)= changestatus(i)></td>    -->
+
+                    <!-- <td><button>Verify</button></td>
+                    <td><button>Cancel</button></td> -->
+                  </tr>
+                  
+                  
+                </tbody>
+              </table>
+              <pagination-controls (pageChange)="p=$event"></pagination-controls>
+        </div>
+    </div>
+</div>

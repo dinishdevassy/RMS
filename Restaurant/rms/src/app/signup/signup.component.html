@@ -1,0 +1,47 @@
+<div class="container">
+    <div class="row">
+        <div class="col col-4  col-sm-4 col-md-4">
+        
+        </div>
+
+        <div class="col col-4  col-sm-4 col-md-4">
+            
+            <br>
+            <div class="card " style="background-color: lightblue;">
+                <div class="card-header text-center">
+                    SignUp  Here...
+                </div>
+                <div class="card-body">
+                    <form action="">
+                        User Name :
+                        <input type="text" class="form-control"name="username" id=""[(ngModel)]="username"> 
+                        Phone Number : 
+                        <input type="text" class="form-control"name="phno" id="" [(ngModel)]="phno">
+                        
+                        Email: 
+                        <input type="text" class="form-control"name="email" id=""[(ngModel)]="email">
+                        
+                        City: 
+                        <input type="text" class="form-control"name="city" id=""[(ngModel)]="city">
+                        
+                        Password: 
+                        <input type="password" class="form-control"name="pswd" id=""[(ngModel)]="pswd">
+                        
+                        Confirm Password: 
+                        <input type="password" class="form-control"name="cpswd" id=""[(ngModel)]="cpswd">
+                        <br>
+                        <input type="button" class="text-primary" value="SignUp" (click)=newuser()>  
+                        <input type="reset" style="float: right; "class="text-primary" value="Reset" >    
+                    </form>
+                </div>
+                <div class="card-footer text-muted text-center">
+                  <p>Have Account ? <a href="">Login</a> </p>
+                </div>
+
+              </div>
+        </div>
+        <div class="col col-4  col-sm-4 col-md-4">
+
+        </div>
+    </div>
+</div>

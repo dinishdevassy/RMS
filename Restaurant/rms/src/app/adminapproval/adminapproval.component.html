@@ -1,0 +1,46 @@
+<!-- <p>adminapproval works!</p> -->
+<app-adminheader></app-adminheader>
+<div class="container-fluid">
+    <div class="row">
+        <!-- <div class="col col-2 col-sm-2 col-md-2"></div> -->
+        <div class="col col-12 col-sm-12 col-md-12">
+            <h3 style="text-align: center;">Restaurant Awaiting Approval</h3>
+            <table class="table custom_table">
+                <thead>
+                    <!-- <th>Sl.No</th> -->
+                    <th>Owner Name</th>
+                    <th>Owner PhNo</th>
+                    <th>Email</th>
+                    <th>Licence</th>
+                    <th>Remarks</th>
+                    <th colspan="2">Action</th>
+                    
+                </thead>
+                <tr *ngFor="let i of result | paginate:{itemsPerPage: 7, currentPage:p}">
+                    <!-- <td>{{ j+1 }}</td> -->
+                    <td>
+                        {{i.owner_name}}
+                    </td>  
+                    <td>{{i.owner_phno}}</td>
+                    <td>{{i.owner_email}}</td>
+                    <td>{{i.owner_licenseno}}</td>
+                    <td><input type="text" placeholder="Remarks" name="" class=" form-control"id=""></td>
+                    <td>
+                    <div class="input-group">
+                        <div class="input-group-append">
+                            <input type="button" class="btn btn-primary "value="Approve" id="approved" (click)=approval(1,i._id)>   
+                            <input type="button" class="btn btn-primary "value="Reject" id="rejected" (click)=approval(2,i._id) >
+                            <!-- <button class="btn btn-outline-secondary" type="button">Button</button>
+                          <button class="btn btn-outline-secondary" type="button">Button</button> -->
+                        </div>
+                    </div>
+                    </td>
+
+                </tr>
+                <br>
+            </table>
+            <pagination-controls (pageChange)="p=$event"></pagination-controls>
+        </div>
+        <div class="col col-2 col-sm-2 col-md-2"></div>
+    </div>
+</div>

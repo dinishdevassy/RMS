@@ -1,0 +1,75 @@
+<app-userheader></app-userheader>
+<div class="container">
+    <div class="row">
+        <div class="col col-4 col-sm-4"></div>
+        <div class="col col-4 col-sm-4">
+            <h3 style="text-align: center;">{{name}}</h3>
+            <!-- <h5 style="text-align: center;">{{city}}</h5> -->
+        </div>
+        <div class="col col-4 col-sm-4"></div>
+    </div>
+    <div class="row">
+        <!-- <div class="col col-1 col-sm-1 "></div> -->
+        <div class="col col-12 col-sm-12 ">
+            <table style="border: none; " class="table custom_table">
+                
+                <tr>
+                    <td colspan="1"> 
+                        <label for="date" >Date :</label>
+                    </td>
+                    <td colspan="2"> 
+                        <input type="date" class="form-control" id="date" name="date" [(ngModel)]=reservation.date >
+                    </td>
+                    <td colspan="4"></td>
+                </tr>
+                <tr>
+                    <td colspan="1"> 
+                        <label for="time" >Time Slot:</label> 
+                    <td colspan="2"> 
+                        <input type="number" class="form-control" id="time" name="time"  min="{{mintime}}" max="{{maxtime}}" [(ngModel)]=reservation.time> 
+                    </td>
+                    <td colspan="4"><label for="" style="color: red;">Each time slot is 1 hr </label></td>
+                </tr>
+                <tr >
+                    <td colspan="5"> Seat Availability</td>
+                    <td colspan="2" style="text-align: right;"> <button type="button" class="btn btn-primary" (click)=checkavailability()>Check Availability</button> </td>
+                </tr>
+                <tr style="text-align: center;">
+                    <td>Type</td>
+                    <td>Seat-1</td>
+                    <td>Seat-2</td>
+                    <td>Seat-4</td>
+                    <td>Seat-6</td>
+                    <td>Seat-8</td>
+                    <td>Seat-10</td>
+                </tr>
+                <tr style="text-align: center;">
+                    <td>Seat Available</td>
+                    <td >{{seattype.seat_1}}</td>
+                    <td >{{seattype.seat_2}}</td>
+                    <td >{{seattype.seat_4}}</td>
+                    <td >{{seattype.seat_6}}</td>
+                    <td >{{seattype.seat_8}}</td>
+                    <td >{{seattype.seat_10}}</td>
+                </tr>
+                <tr style="text-align: center;">
+                    <td>Required Seat</td>
+                    <td><input type="number" value="0" class="form-control" [(ngModel)]=reservation.tablelist.seat_1 ></td>
+                    <td><input type="number" value="0" class="form-control" [(ngModel)]=reservation.tablelist.seat_2 ></td>
+                    <td><input type="number" value="0" class="form-control" [(ngModel)]=reservation.tablelist.seat_4 ></td>
+                    <td><input type="number" value="0" class="form-control" [(ngModel)]=reservation.tablelist.seat_6 ></td>
+                    <td><input type="number" value="0" class="form-control" [(ngModel)]=reservation.tablelist.seat_8 ></td>
+                    <td><input type="number" value="0" class="form-control" [(ngModel)]=reservation.tablelist.seat_10 ></td>
+                </tr>
+                <tr style="text-align: center;">
+                    <td colspan="6">
+                        <marquee behavior="" direction="">
+                            <label for="" style="color: red;">Reserved Table will be cancelled automatically after 30 minuts.Please be on time... </label>
+                        </marquee>
+                    </td>    
+                    <td> <button type="button" class="btn btn-primary" (click)=tablereservation()>Reserve Table</button> </td>
+                </tr>
+            </table>
+        </div>
+        <!-- <div class="col col-1 col-sm-1 "></div>  -->
+</div>
