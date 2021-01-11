@@ -16,15 +16,15 @@
     <div class="row">
         <div class="col col-3 col-sm-3 " *ngFor="let i of result| paginate:{itemsPerPage: 4, currentPage:p}">
             <div class="card text-center" style="background-color: rgb(63, 170, 63);">
-                <div class="card-header">
-                    <p class="mx-auto">{{i.status}}</p>                  
-                </div>
+                <!-- <div class="card-header">
+                </div> -->
                 <div class="card-body">
-                  <h3 class="card-title">{{i.restname}}</h3>
-                  <img class ="card-img-top rounded-circle " src="http://localhost:8080/rest/item/{{i.image}}" width="150" height="200" alt="{{i.image}} Not Found">
-                  <br>
-                  <h4 class="card-text">{{i.itemname}}</h4>
-                  <h5 class="card-text"> {{i.rate}} Rs</h5>
+                    <!-- <h3 class="card-title">{{i.restname}}</h3> -->
+                    <h4 class="card-text">{{i.itemname}}</h4>
+                    <img class ="card-img-top rounded-circle " src="http://localhost:8080/rest/item/{{i.image}}" width="150" height="200" alt="{{i.image}} Not Found">
+                    
+                    <h5 class="card-text"> {{i.rate}} Rs</h5>
+                    <p class="mx-auto">{{i.status}}</p>                  
                   
                 </div>
                 
