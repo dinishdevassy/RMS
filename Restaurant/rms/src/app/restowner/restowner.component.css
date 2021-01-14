@@ -1,0 +1,8 @@
+.custom_logincard{
+    background-blend-mode: overlay;
+    background-color: rgba(211, 175, 113, 0.3);
+    /* opacity: 0.3; */
+    /* color: #d3af71; */
+    color: white;
+    /* font-weight: 500; */
+}

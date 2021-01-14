@@ -7,11 +7,11 @@
         <div class="col col-4  col-sm-4 col-md-4">
 
             <br>
-            <div class="card " style="background-color:lightblue;">
-                <div class="card-header text-center">
-                    Register your Restaurant Here...
-                </div>
+            <div class="card custom_logincard" >
+                <!-- <div class="card-header text-center">
+                </div> -->
                 <div class="card-body">
+                    <h5>Register your Restaurant Here...</h5>
                     <form action="">
                         Owner Name :
                         <input type="text" class="form-control" name="name" id="" [(ngModel)]="ownername">
@@ -34,13 +34,16 @@
                         Confirm Password:
                         <input type="password" class="form-control" name="cpwd" id="" [(ngModel)]="ownercpwd">
                         <br>
-                        <input type="button" class="text-primary" value="Register" (click)=newowner()>
+
+                        <input type="button" class="text-primary" value="Register" (click)=newowner() data-container="body" data-toggle="popover" data-placement="top" data-content="err">
+                        <!-- <input type="button" class="text-primary" value="Register" (click)=newowner()> -->
+
                         <input type="reset" style="float: right; " class="text-primary" value="Reset">
                     </form>
+                    <p style="text-align: center;">Have Account ? <a href="">Login</a> </p>
                 </div>
-                <div class="card-footer text-muted text-center">
-                    <p>Have Account ? <a href="">Login</a> </p>
-                </div>
+                <!-- <div class="card-footer text-muted text-center">
+                </div> -->
 
             </div>
         </div>
@@ -49,4 +52,4 @@
         </div>
     </div>
 </div>
-<app-restheader></app-restheader>
+<!-- <app-restheader></app-restheader> -->

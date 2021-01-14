@@ -12,6 +12,8 @@ export class UserviewrestaurantComponent implements OnInit {
   result;
 now;
 p;
+srchkey;
+srchterm;
   ngOnInit(): void {
     this.rs.displayrestaurant().subscribe(data=>{
       
@@ -20,6 +22,7 @@ p;
       
       console.log(this.result);
       console.log(this.now.getHours());
+      
       
       
     })
@@ -35,5 +38,17 @@ p;
     console.log("id"+restid);
     this.rt.navigateByUrl("/userreservation/"+restid)
     
+  }
+  public search(){
+    console.log(this.srchkey,this.srchterm);
+    this.rs.search(this.srchkey,this.srchterm).subscribe(data=>{
+      this.result=data;
+    })
+
+  }
+  public clearsearch(){
+    this.srchkey="";
+    this.srchterm="";
+    this.ngOnInit();
   }
 }

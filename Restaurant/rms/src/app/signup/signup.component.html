@@ -7,11 +7,11 @@
         <div class="col col-4  col-sm-4 col-md-4">
             
             <br>
-            <div class="card " style="background-color: lightblue;">
-                <div class="card-header text-center">
-                    SignUp  Here...
-                </div>
+            <div class="card custom_logincard">
+                <!-- <div class="card-header text-center">
+                </div> -->
                 <div class="card-body">
+                    <h5 style="text-align: center;">SignUp</h5>
                     <form action="">
                         User Name :
                         <input type="text" class="form-control"name="username" id=""[(ngModel)]="username"> 
@@ -33,10 +33,10 @@
                         <input type="button" class="text-primary" value="SignUp" (click)=newuser()>  
                         <input type="reset" style="float: right; "class="text-primary" value="Reset" >    
                     </form>
+                    <p style="text-align: center;">Have Account ? <a href="">Login</a> </p>
                 </div>
-                <div class="card-footer text-muted text-center">
-                  <p>Have Account ? <a href="">Login</a> </p>
-                </div>
+                <!-- <div class="card-footer text-muted text-center">
+                </div> -->
 
               </div>
         </div>

@@ -28,7 +28,7 @@ export class UserreservationdetailsComponent implements OnInit {
     this.rs.userreservationdetails(this.userid).subscribe(data=>{
       this.result=data;
       this.reportdata=this.result[0];
-      console.log("hh"+JSON.stringify(this.result));
+      console.log(JSON.parse(JSON.stringify(this.result)));
       // this.result.forEach(item => {
         // this.res = this.details.filter(element => element._id==item.restid);
         // console.log("restid"+item.restid);

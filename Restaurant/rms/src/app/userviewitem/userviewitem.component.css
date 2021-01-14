@@ -1,7 +1,7 @@
 .custom_card{
     /* background-blend-mode: overlay; */
-    background-color: rgba(50,50,50,0.7);
+    background-color: rgba(252, 249, 249,.4);
     /* opacity: 0.4; */
-    color: white;
+    color:black;
     font-weight: 500;
 }

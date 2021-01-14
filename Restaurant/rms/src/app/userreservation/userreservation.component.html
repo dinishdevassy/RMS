@@ -28,7 +28,7 @@
                     <td colspan="2"> 
                         <input type="number" class="form-control" id="time" name="time"  min="{{mintime}}" max="{{maxtime}}" [(ngModel)]=reservation.time> 
                     </td>
-                    <td colspan="4"><label for="" style="color: red;">Each time slot is 1 hr </label></td>
+                    <td colspan="4"><label for="" style="color: white;">Each time slot is 1 hr </label></td>
                 </tr>
                 <tr >
                     <td colspan="5"> Seat Availability</td>
@@ -63,9 +63,9 @@
                 </tr>
                 <tr style="text-align: center;">
                     <td colspan="6">
-                        <marquee behavior="" direction="">
-                            <label for="" style="color: red;">Reserved Table will be cancelled automatically after 30 minuts.Please be on time... </label>
-                        </marquee>
+                        <!-- <marquee behavior="" direction=""> -->
+                            <label for="" style="color: white;">Reserved Table will be cancelled automatically after 30 minuts.Please be on time... </label>
+                        <!-- </marquee> -->
                     </td>    
                     <td> <button type="button" class="btn btn-primary" (click)=tablereservation()>Reserve Table</button> </td>
                 </tr>

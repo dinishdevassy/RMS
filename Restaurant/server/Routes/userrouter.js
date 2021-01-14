@@ -39,4 +39,5 @@ router.get('/userdetails',function(req,res){
             // console.log(result);
     });
 })
+
 module.exports=router;

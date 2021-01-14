@@ -20,9 +20,21 @@ export class RestownerComponent implements OnInit {
   valid:boolean;
   role;
   ownercity;
-  constructor(private rs:RestService,private rt:Router) { }
+  err;
+  constructor(private rs:RestService,private rt:Router) { 
+    this.ownername="";
+    this.ownerphno="";
+    this.ownerpwd="";
+    this.ownercpwd="";
+    this.ownerlicenseno="";
+    this.ownercity="";
+    this.owneremail="";
+  }
 
   ngOnInit(): void {
+    this.err="";
+    this.valid=false;
+    // this.ownerphno="";
   }
   newowner(){
     this.valid=this.validate();
@@ -31,20 +43,58 @@ export class RestownerComponent implements OnInit {
     this.rs.addowner(this.ownername,this.ownerphno,this.owneremail,this.ownerpwd,this.ownerlicenseno).subscribe(data=>{
       this.details=data;
       console.log(this.details.msg);
-      window.alert(this.details.msg);
-      
-      this.rt.navigateByUrl("/home");
+      alert("Registered Succesfully");
+      this.rt.navigateByUrl("");
     })
   }
   else
-    alert("Password not Match...")  
+    this.ngOnInit();
       
   }
   
 
   validate(){
-    if(this.ownercpwd==this.ownerpwd)
-      return true;
-    return false;
+    console.log(this.ownerphno);
+    
+    if((this.ownername=="") || (this.ownername=='undefined')){
+      alert("Enter Name");
+      // this.err="Enter Name"
+      return false;
+    }
+    if((this.ownerphno=="") || (this.ownerphno.length!=10)){
+      alert("Enter Valid phno");
+      return false;
+    }
+    if((this.owneremail=="") || (this.owneremail=='undefined')){
+      alert("Enter Email");
+      return false;
+    }
+    if((this.owneremail.includes("@"))==false) 
+      {
+      alert("Enter Valid email");
+      return false;
+    }
+    if((this.ownerlicenseno=="") || (this.ownerlicenseno=='undefined')){
+      alert("Enter License No");
+      return false;
+    }
+    if((this.ownerpwd=="") || (this.ownerpwd=='undefined')){
+      alert("Enter Password");
+      return false;
+    }
+    if((this.ownercpwd=="") || (this.ownercpwd=='undefined')){
+      alert("Enter Confirm Password");
+      return false;
+    }
+    if(this.ownercpwd!=this.ownerpwd)
+      {
+        alert("Password not Match...")  
+        return false;
+      }
+      
+      // $('').popover(options)
+    
+      
+    return true;
   }
 }

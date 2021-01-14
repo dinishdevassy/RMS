@@ -61,10 +61,13 @@ export class RestverificationComponent implements OnInit {
 
   public verify(i){
     // console.log(i.otp+"ss"+JSON.stringify(i.enteredOTP));
+    console.log(i.otp);
+    
     if(i.otp==i.enteredOTP)
     {
     this.rs.verify(i._id).subscribe(data=>{
       this.result=data;
+      alert("Verified Succefully")
     })
   }
   else

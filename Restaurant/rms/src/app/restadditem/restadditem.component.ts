@@ -29,12 +29,14 @@ result;
 p;
 itemid;
 update_flag:boolean;
+valid:boolean;
   constructor( private rt:Router,private rs:RestService) {
     this.item=new ItemModel(null,null,null,null,null);
     this.i1=new ItemModel(null,null,null,null,null);
    }
 
   ngOnInit(): void {
+    this.valid=false;
     this.update_flag=false;
     this.username=localStorage.getItem("username");
     this.role=localStorage.getItem("role");
@@ -79,6 +81,8 @@ update_flag:boolean;
         })
       }
       additem(){
+        this.valid=this.validate();
+        if(this.valid){
         console.log(this.update_flag);
         if(this.update_flag==true)        
         {
@@ -98,15 +102,35 @@ update_flag:boolean;
           form.append('status',this.item.status);
         }
         console.log(this.item);
-        
-
-           this.uploader.uploadAll();
-           
-          //  this.rt.navigateByUrl("/additem"); 
-           
+           this.uploader.uploadAll();  
         }
         
+          alert("Data Saved succesfully");
         this.ngOnInit();
+        this.item=new ItemModel(null,null,null,null,null);
+      }
       }
 
+      validate(){
+        // console.log("itemname"+this.item.itemname);
+        if(this.item.itemname=="" || this.item.itemname==null){
+          alert(" Enter Item Name");
+          return false;
+        }
+        if(this.item.rate=="" ||this.item.rate==null){
+          alert(" Enter Rate");
+          return false;
+        }
+        if(this.item.status==""||this.item.status==null){
+          alert(" Enter Status");
+          return false;
+        }
+        // console.log(this.item.image);
+        
+        // if(( this.item.image==null)&&(this.update_flag==false)){
+        //   alert("Please upload Image");
+        //   return false;
+        // }
+        return true;
+      }
 }

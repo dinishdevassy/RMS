@@ -1,30 +1,79 @@
 <app-userheader></app-userheader>
 <div class="container">
-    <div class="row">
-            <!-- <h1 class="mx-auto">Restaurant</h1> -->
-            <br>
+  <div class="row">
+    
+    <div class="col col-3 col-sm-3">
+      <br>
+      <!-- <label for="srch key"> Search Type</label> -->
+      <select name="srchkey" id="" class="form-control" [(ngModel)]="srchkey">
+        <!-- <option value=""  selected disabled>search Type</option> -->
+        <option value="name">Search by Name</option>
+        <option value="city">Search by City</option>
+        <option value="star">Search by Star Rating</option>
+        </select>
     </div>
+    <div class="col col-4 col-sm-4"></div>
+    <div class="col col-3 col-sm-3">
+      <br>
+      <input type="text" name="srch" id="srch" class="form-control" placeholder="Search Term" [(ngModel)]="srchterm">
+    </div>
+    <div class="col col-1 col-sm-1">
+      <br>
+      <button type="button" class="btn btn-success" (click)="search()"> Search </button>
+    </div>
+    <div class="col col-1 col-sm-1">
+      <br>
+      <button type="button" class="btn btn-success" (click)="clearsearch()"> Clear </button>
+    </div>
+    <!-- <br>
+     <div class="col col-12 col-sm-12"> 
+      <br> -->
+
+      <!-- <table class="table table-sm table-borderless">
+        <tr>
+          <td >
+            <select name="" id="" class="form-control">
+            <option value="name">Search by Name</option>
+            <option value="city">Search by City</option>
+            <option value="rating">earch by Star Rating</option>
+            </select>
+            </td>
+            <td>
+              <input type="text" name="srch" id="srch" class="form-control" placeholder="Search Term">
+            </td>
+            <td>
+              <button type="button" class="btn btn-success"> Search </button>
+            </td>
+          </tr>
+        </table> -->
+      <!-- </div> -->
+  </div>
+      <!-- </div> -->
+    <!-- <div> -->
+      <br>
     <div class="row">
        
         <div class="col col-3 col-sm-3 " *ngFor="let i of result| paginate:{itemsPerPage: 4, currentPage:p}">
-            <div class="card text-center" style="background-color: lightgreen;">
+            <div class="card text-center custom_card">
                 <!-- <div class="card-header">
                 </div> -->
                 <div class="card-body">
                   <h3 class="card-title">{{i.name}}</h3>
                   <p class="mx-auto">{{i.star}} Star Restaurant</p>                  
-                  <img class ="card-img-top rounded-circle " src="http://localhost:8080/rest/view/{{i.image}}" width="150" height="200" alt="{{i.image}} Not Found">
-                  <p class="card-text">{{i.city}}</p>
-                  <p class="card-text">PhNo   : {{i.phno}}</p>
+                  <img class ="card-img-top rounded-circle " src="http://localhost:8080/rest/view/{{i.image}}" width="100" height="100" alt="{{i.image}} Not Found">
+                  <!-- <p class="card-text">{{i.city}}</p>
+                  <p class="card-text">{{i.phno}}</p> -->
+                  {{i.city}} <br>
+                  {{i.phno}}
                   <p  class="card-text">{{i.opentime}} Am TO {{i.closetime}} Pm</p>
                   <!-- <a href="#"   ></a> -->
                   <table>
                     <tr>
                       <td>
-                        <button class="btn btn-link" value="View Dishes" id="viewdishes" (click)="userviewrestitem(i._id)">View Dishes</button>
+                        <button style="color: brown;" class="btn btn-link" value="View Dishes" id="viewdishes" (click)="userviewrestitem(i._id)">View Dishes</button>
                       </td>
                       <td>
-                        <button class="btn btn-link" value="Reserve Table" id="reservetable" (click)="userreservation(i._id)">Reserve Table</button>
+                        <button  style="color: brown;" class="btn btn-link" value="Reserve Table" id="reservetable" (click)="userreservation(i._id)">Reserve Table</button>
                       </td>
                     </tr>
                   </table>
@@ -33,9 +82,9 @@
                    <a href="userreservation">Reserve Table</a>
                 </div> -->
               </div>
-              <br>
         </div>
         
     </div>
+    <br>
     <pagination-controls (pageChange)="p=$event"></pagination-controls>
 </div>

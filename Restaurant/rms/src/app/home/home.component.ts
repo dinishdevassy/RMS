@@ -25,6 +25,9 @@ export class HomeComponent implements OnInit {
     this.view_err=false;
     this.view_err1=true;
     this.role="";
+    localStorage.setItem("username","")
+    localStorage.setItem("role","");
+    localStorage.setItem("userid","")
 
   }
   key="role";
@@ -35,14 +38,15 @@ export class HomeComponent implements OnInit {
    // this.ws.set(this.key,this.value)
    this.rs.login(this.uname,this.pwd).subscribe(data=>{
      this.result=data;
-    //  console.log(this.result.length);
+
+    //  console.log('length',this.result.length);
      if(this.result.length>0)
         this.my_nav(this.result)  
       else
       {
       //  alert("Invalid Username or Password")
 
-      this.err="Invalid Usename or password"
+      this.err="Invalid Username or password"
        this.view_err=true;
         this.uname="";
         this.pwd=""
@@ -55,6 +59,9 @@ export class HomeComponent implements OnInit {
 
   }
   my_nav(result){
+    console.log('username',this.uname);
+    
+
     this.view_err=true;
     this.view_err1=!this.err;
     this.role=result[0].role;

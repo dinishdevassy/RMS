@@ -1,44 +1,75 @@
 <app-userheader></app-userheader>
 <div class="container">
     <div class="row">
-        <div class="col col-4 col-sm-4">
+        <div class="col col-6 col-sm-6">
             <table class="table table-striped table hover custom_table" >
                 <thead>
                     <tr>
                         <th>Date</th>
-                        <!-- <th>Restaurant</th> -->
+                        <th>Restaurant</th>
                         <th>Status</th>
-                        <th></th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tr *ngFor="let i of result | paginate:{itemsPerPage: 6, currentPage:p}"> 
                     <td>{{i.date}}</td>
-                    <!-- <td>{{i.restname}}</td> -->
+                    <td>{{i.restdata[0].name}}</td>
                     <td>{{i.status}}</td>
                     <td> <button type="button" class="btn btn-primary" (click)="reservationreport(i)">Details</button></td>
                 </tr>
             </table>
             <pagination-controls (pageChange)="p=$event"></pagination-controls> 
         </div>
-        <div class="col col-8 col-sm-8">
+        <!-- <div class="col col-2 col-sm-2"></div> -->
+        <div class="col col-6 col-sm-6">
             <br>
-            <div class="card" style="text-align: center" *ngIf="view">
-                <!-- <div class="card-header">
-                  
-                </div> -->
-                <div class="card-body " >
-                    <h4 class="fontblack">Reservation Details</h4>
-                    <!-- <h6 class="fontblack"> Restaurant : {{reportdata.restname}}</h6> -->
-                  <!-- <h5 class="card-title">Restaurant : {{reportdata.name}} </h5> -->
-                  <p class="card-text fontblack">Date : {{reportdata.date}}</p>
-                  <p class="card-text fontblack">Time : {{reportdata.time}}</p>
-                  <p class="card-text fontblack">Status : {{reportdata.status}}</p>
-                  <h5 class="card-text " style="color: darkorchid;">OTP : {{reportdata.otp}}</h5>
-                    <marquee behavior="" direction="">
-                        <p style="color: red;">Otp have to be verified in the Restaurant</p>
-                    </marquee>    
+            <br>
+            <div class="card" *ngIf="view">
+                <div class="img-avatar">
                 </div>
+                <div class="card-text">
+                  <div class="portada">
+                  
+                  </div>
+                  <div class="">   
+                    <div class="title">OTP : {{reportdata.otp}}</div>
+                    <h2>{{reportdata.restdata[0].name}}</h2> <h5 class="descnew">{{reportdata.restdata[0].city}}</h5>
+                
+                <div class="desc">
+                        {{reportdata.date}} <br>
+                        {{reportdata.time}} : 00 <br>
+                        {{reportdata.status}} <br>
+                
+                        <marquee behavior="" direction="">
+                            <p style="color: red;">Otp have to be verified in the Restaurant</p>
+                        </marquee> 
+                </div>
+                
+            </div>
+               
+                </div>
+                
+               
+                
               </div>
+            
+            <!-- <div class="card"  *ngIf="view">
+                <div class="card-body " >
+                    <h3 class="fontblack" style="text-align: center;">Reservation Details</h3>
+                    <div style="text-align: left; padding-left: 200px;">
+
+                        <h5 class="fontblack"> Restaurant : {{reportdata.restdata[0].name}}</h5>
+                        <h6 class="fontblack"> Location : {{reportdata.restdata[0].city}}</h6>
+                        <p class="card-text fontblack">Date : {{reportdata.date}}</p>
+                        <p class="card-text fontblack">Time : {{reportdata.time}}</p>
+                        <p class="card-text fontblack">Status : {{reportdata.status}}</p>
+                        <h5 class="card-text " style="color: darkorchid;">OTP : {{reportdata.otp}}</h5>
+                        <marquee behavior="" direction="">
+                            <p style="color: red;">Otp have to be verified in the Restaurant</p>
+                        </marquee>    
+                    </div>
+                </div>
+              </div> -->
         </div>    
     </div>
 </div>

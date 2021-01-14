@@ -1,7 +1,44 @@
 .custom_card{
     /* background-blend-mode: overlay; */
-    background-color: rgba(50,50,50,0.7);
+    background-color: rgba(50,50,50,0.0);
     /* opacity: 0.4; */
     color: white;
     font-weight: 500;
 }
+.custom_logincard{
+    background-blend-mode: overlay;
+    background-color: rgba(211, 175, 113, 0.3);
+    /* opacity: 0.3; */
+    /* color: #d3af71; */
+    color: white;
+    /* font-weight: 500; */
+}
+.book-a-table {
+    border: 2px solid #cda45e;
+    color: #fff;
+    border-radius: 50px;
+    padding: 8px 25px;
+    text-transform: uppercase;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    transition: 0.3s;
+  }
+  
+  .book-a-table a:hover {
+    background: #cda45e;
+    color: #fff;
+  }
+  .btn-book {
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    display: inline-block;
+    padding: 12px 30px;
+    border-radius: 50px;
+    transition: 0.3s;
+    line-height: 1;
+    color: white;
+    border: 2px solid #cda45e;
+  }

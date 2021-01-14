@@ -95,7 +95,7 @@ router.post('/newuser',function(req,res){
     l.save((err)=>{
         if(err) throw err;
         else
-        res.send({msg:"Sign in Succesfull..."})
+        res.send({msg:"Sign up Succesfull..."})
     })
 })
 router.get('/displayallrestaurant',function(req,res){
@@ -169,16 +169,59 @@ router.post('/updateitem',function(req,res){
 })
 
 
-router.post('/userreservationdetails',function(req,res){
+router.post('/newuserreservationdetails',function(req,res){
     var r=new reservation();
     userid=req.body.userid;
     console.log(userid);
-    reservation.find({userid:userid},function(err,result){
-        if(err) throw err;
-        else
-            res.send(result);
-    }).sort({date:-1});
+    // reservation.find({userid:userid},function(err,result){
+    //     if(err) throw err;
+    //     else
+    //         res.send(result);
+    // }).sort({date:-1});
+    reservation.aggregate(
+        [
+            {
+              '$match': {
+                'userid': userid
+              }
+            }, {
+              '$lookup': {
+                'from': 'restaurant', 
+                'let': {
+                  'restid': {
+                    '$toObjectId': '$restid'
+                  }
+                }, 
+                'pipeline': [
+                  {
+                    '$match': {
+                      '$expr': {
+                        '$eq': [
+                          '$$restid', '$_id'
+                        ]
+                      }
+                    }
+                  }
+                ], 
+                'as': 'restdata'
+              }
+            }
+          ]
+    ).then(data=>{
+        console.log(data);
+        res.send(data);
+    })
 })
+// router.post('/userreservationdetails',function(req,res){
+//     var r=new reservation();
+//     userid=req.body.userid;
+//     console.log(userid);
+//     reservation.find({userid:userid},function(err,result){
+//         if(err) throw err;
+//         else
+//             res.send(result);
+//     }).sort({date:-1});
+// })
 
 router.post('/seatdetails',function(req,res){
     var r=new restaurant();
@@ -218,6 +261,43 @@ router.post('/verify',function(req,res){
         else
             res.send(result);
     });
+})
+router.post('/search',function(req,res){
+    var r=new restaurant();
+    srchkey=req.body.srchkey;
+    srchterm=req.body.srchterm;
+    console.log(srchkey,srchterm);
+    if(srchkey=='name'){
+        restaurant.find({'name':srchterm},function(err,result){
+            if(err) throw err;
+            else
+                {
+                    res.send(result);
+                    console.log(result);
+                }
+        }); 
+    }
+    else if(srchkey=='city'){
+        restaurant.find({'city':srchterm},function(err,result){
+            if(err) throw err;
+            else
+                {
+                    res.send(result);
+                    console.log(result);
+                }
+        }); 
+    }
+    else if(srchkey=='star'){
+        restaurant.find({'star':srchterm},function(err,result){
+            if(err) throw err;
+            else
+                {
+                    res.send(result);
+                    console.log(result);
+                }
+        }); 
+    }
+    
 })
 router.get("/item/:image", function (req, res) {
     let dir = path.join(path.dirname(__dirname), '/item', req.params.image);

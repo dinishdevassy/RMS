@@ -58,7 +58,7 @@ export class RestService {
   }
 
   public login(uname,pwd){
-    console.log("service");
+    // console.log("service");
     let data = { username: uname, password: pwd }
     let url="http://localhost:8080/user/login";
     return this.hc.post(url,data);
@@ -100,7 +100,7 @@ export class RestService {
     // console.log("hhd");
     
     let data={userid:userid}
-    let url="http://localhost:8080/rest/userreservationdetails";
+    let url="http://localhost:8080/rest/newuserreservationdetails";
     return this.hc.post(url,data);
   }
   public verify(id){
@@ -113,5 +113,10 @@ export class RestService {
     // console.log(otp +" ss "+ot);
     let url="http://localhost:8080/user/userdetails";
     return this.hc.get(url);
+  }
+  public search(srchkey,srchterm){
+    let data={srchkey:srchkey,srchterm:srchterm}
+    let url="http://localhost:8080/rest/search";
+    return this.hc.post(url,data);
   }
 }

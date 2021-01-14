@@ -14,6 +14,7 @@ export class UserreservationComponent implements OnInit {
   reservation:ReservationModel;
 
   constructor(private rs:RestService,private ar:ActivatedRoute,private rt:Router) { 
+    this.valid=false;
     let seats={
       seat_1:0,
        seat_2:0,
@@ -35,8 +36,11 @@ this.reservation=new ReservationModel(null,null,null,null,null,seats,null);
   mintime;
   otp;
   status;
+  valid;
   ngOnInit(): void {
     // this.restid=localStorage.getItem("restid");
+    // console.log("cdate"+Date.now);
+    
     this.restid=this.ar.snapshot.paramMap.get("restid");
     console.log(this.restid);
     this.userid=localStorage.getItem("userid");
@@ -65,16 +69,19 @@ this.reservation=new ReservationModel(null,null,null,null,null,seats,null);
     })
   }
   public tablereservation(){
-    console.log(this.reservation)
-    var val = Math.floor(1000 + Math.random() * 9000);
-    this.reservation.otp=val;
-    // console.log(val);
-    this.rs.tablereservation(this.reservation).subscribe(data=>{
-      this.details=data;
-    })
-    alert("Table Reserved Succesfully...");
-    this.rt.navigateByUrl("/userreservationdetails");
+    this.valid=this.validate();
 
+    if(this.valid){
+      console.log(this.reservation)
+      var val = Math.floor(1000 + Math.random() * 9000);
+      this.reservation.otp=val;
+      // console.log(val);
+      this.rs.tablereservation(this.reservation).subscribe(data=>{
+        this.details=data;
+      })
+      alert("Table Reserved Succesfully...");
+      this.rt.navigateByUrl("/userreservationdetails");
+    }
   }
 
   public checkavailability(){
@@ -113,4 +120,9 @@ this.reservation=new ReservationModel(null,null,null,null,null,seats,null);
     
   }
 
+  validate(){
+    console.log(this.reservation.date+" now" +new Date());
+    
+    return true;
+  }
 }
